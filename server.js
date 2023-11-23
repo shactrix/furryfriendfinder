@@ -61,24 +61,47 @@ db.on('disconnected', () => console.log('MONGO is disconnected'));
 
 
 // INDEX
-
-
+app.get('/furryFriend', (req, res) => {
+    res.render('index.ejs', {
+        allfurryFriend: furryFriend
+    })
+})
 
 // NEW
-
+app.get('/furryFriend/new', (req, res) => {
+    res.render('new.ejs')
+})
 
 
 // POST
-
+app.post('/furryFriend', (req, res) => {
+    req.body.name = req.body.name.charAt(0).toUpperCase() + req.body.name.slice(1);
+    furryFriend.push(req.body)
+    res.redirect('/furryFriend')
+    // const furryFriendId = furryfriend.length - 1;
+    // res.redirect(`/furryFriend/${furryFriendId}`)
+})
 
 
 // SHOW
-
+app.get('/furryFriend/:id', (req, res) => {
+    res.render('show.ejs', {
+        furryFriend: furryFriend[req.params.id]
+    })
+})
 
 
 
 // EDIT
-
+app.get('/furryFriend/:id/edit', (req, res) => {
+    res.render(
+        'edit.ejs',
+        {
+            furryFriend: furryFriend[req.params.id],
+            id: req.params.id
+        }
+    )
+})
 
 
 
@@ -87,7 +110,10 @@ db.on('disconnected', () => console.log('MONGO is disconnected'));
 
 
 // DELETE
-
+app.delete('/furryFriend/:id', (req,res) => {
+    furryFriend.splice(req.params.id, 1)
+    res.redirect('/furryFriend')
+})
 
 
 

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    <header>
+        <%- include ('./partials/header.ejs') %>
+    </header>
+    <body>
+            <ul>
+                <% for (let i=0; i < allfurryFriend.length; i++) { %>
+                    <li><a href="/furryFriend/<%=i%>">
+                            <%=allfurryFriend[i].name%>
+                        </a></li>
+                <% } %>
+            </ul>
+    </body>
+    <!-- <%- include ('./partials/footer.ejs') %> -->
+</html>

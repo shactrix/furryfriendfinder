@@ -8,7 +8,7 @@ module.exports = [
         kids: true,
         cats: true,
         dogs: true,
-        img: 'img'
+        img: '/assets/dog1brown.jpg'
     },
     {
         petType: 'Dog',

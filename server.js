@@ -1,8 +1,8 @@
 // DEPENDCIES
-// require('dotenv').config()
+ require('dotenv').config()
 const express = require('express')
 const app = express();
-// const mongoose = require('mongoose')
+ const mongoose = require('mongoose')
 const path = require('path')
 
 // const PORT = process.env.PORT
@@ -22,26 +22,26 @@ app.get('/', (req, res) => {
     res.redirect('/furryFriendFinder')
 })
 
-// // How to connect to the database either via heroku or locally
-// const MONGODB_URI = process.env.MONGODB_URI;
-// mongoose.set('strictQuery', true)
+// How to connect to the database either via heroku or locally
+const MONGODB_URI = process.env.MONGODB_URI;
+mongoose.set('strictQuery', true)
 
-// // MONGODB ATLAS CONNECTION
-// // May or may not need these depending on your Mongoose version
-// mongoose.connect(MONGODB_URI , { 
-//     // useNewUrlParser: false, -- deprecated
-//     useUnifiedTopology: true,
-//     useCreateIndex: true,
-//     useFindAndModify: false
-// });
-// // Database Connection Error/Success
-// const db = mongoose.connection
-// db.on('error', (err) => console.log(err.message + ' is MONGO not running?'));
-// db.on('connected', () => console.log('MONGO is connected'));
-// db.on('disconnected', () => console.log('MONGO is disconnected'));
+// MONGODB ATLAS CONNECTION
+// May or may not need these depending on your Mongoose version
+mongoose.connect(MONGODB_URI , { 
+    // useNewUrlParser: false, -- deprecated
+    useUnifiedTopology: true,
+    // useCreateIndex: true,
+    // useFindAndModify: false
+});
+// Database Connection Error/Success
+const db = mongoose.connection
+db.on('error', (err) => console.log(err.message + ' is MONGO not running?'));
+db.on('connected', () => console.log('MONGO is connected'));
+db.on('disconnected', () => console.log('MONGO is disconnected'));
 
 
-// SEED
+//SEED
 // furryFriend.create(seed, (err, data) => {
 //   if (err) console.log(err.message)
 //   console.log('added seed data')
@@ -62,10 +62,13 @@ app.get('/', (req, res) => {
 
 // INDEX
 app.get('/furryFriend', (req, res) => {
-    res.render('index.ejs', {
-        allfurryFriend: furryFriend
-    })
+    furryFriend.find({}, (error, allFurryFriends)=>{
+        res.render('index.ejs', {
+            furryFriends: allFurryFriends
 })
+    })
+        })
+    
 
 // NEW
 app.get('/furryFriend/new', (req, res) => {

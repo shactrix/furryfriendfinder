@@ -18,9 +18,9 @@ app.use((req,res, next) =>{
     next()
 })
 
-app.get('/', (req, res) => {
-    res.redirect('/furryFriendFinder')
-})
+// app.get('/', (req, res) => {
+//     res.redirect('/index')
+// })
 
 // How to connect to the database either via heroku or locally
 const MONGODB_URI = process.env.MONGODB_URI;
@@ -51,17 +51,23 @@ db.on('disconnected', () => console.log('MONGO is disconnected'));
 
 
 // HOME
+app.get('/', (req, res) => {
+    res.render('home.ejs')
+})
 
 
 
 
 // ABOUT
+app.get('/about', (req, res) => {
+    res.render('about.ejs')
+})
 
 
 
 
 // INDEX
-app.get('/furryFriend', (req, res) => {
+app.get('/index', (req, res) => {
     furryFriend.find({}, (error, allFurryFriends)=>{
         res.render('index.ejs', {
             furryFriends: allFurryFriends
@@ -71,23 +77,23 @@ app.get('/furryFriend', (req, res) => {
     
 
 // NEW
-app.get('/furryFriend/new', (req, res) => {
+app.get('/new', (req, res) => {
     res.render('new.ejs')
 })
 
 
 // POST
-app.post('/furryFriend', (req, res) => {
+app.post('/new', (req, res) => {
     req.body.name = req.body.name.charAt(0).toUpperCase() + req.body.name.slice(1);
     furryFriend.push(req.body)
-    res.redirect('/furryFriend')
+    res.redirect('/index')
     // const furryFriendId = furryfriend.length - 1;
     // res.redirect(`/furryFriend/${furryFriendId}`)
 })
 
 
 // SHOW
-app.get('/furryFriend/:id', (req, res) => {
+app.get('/:id', (req, res) => {
     res.render('show.ejs', {
         furryFriend: furryFriend[req.params.id]
     })
@@ -96,7 +102,7 @@ app.get('/furryFriend/:id', (req, res) => {
 
 
 // EDIT
-app.get('/furryFriend/:id/edit', (req, res) => {
+app.get('/:id/edit', (req, res) => {
     res.render(
         'edit.ejs',
         {
@@ -109,17 +115,17 @@ app.get('/furryFriend/:id/edit', (req, res) => {
 
 
 // PUT
-app.put('/furryFriend/:id', (req,res) => { 
+app.put('/:id', (req,res) => { 
     furryFriend[req.params.id] = req.body
-    res.redirect('/furryFriend')
+    res.redirect('/index')
 })
 
 
 
 // DELETE
-app.delete('/furryFriend/:id', (req,res) => {
+app.delete('/:id', (req,res) => {
     furryFriend.splice(req.params.id, 1)
-    res.redirect('/furryFriend')
+    res.redirect('/index')
 })
 
 

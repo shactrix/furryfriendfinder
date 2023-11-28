@@ -6,11 +6,11 @@
     <body>
             <ul>
                 <% for (let i=0; i < furryFriends.length; i++) { %>
-                    <li><a href="/furryFriend/<%=i%>">
+                    <li><a href="/<%=i%>">
                             <%=furryFriends[i].name%>
                         </a></li>
                 <% } %>
             </ul>
     </body>
-    <!-- <%- include ('./partials/footer.ejs') %> -->
+     <%- include ('./partials/footer.ejs') %> 
 </html>

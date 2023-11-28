@@ -3,12 +3,26 @@
     <header>
         <%- include ('./partials/header.ejs') %>
     </header>
-    <body>
-        <form class="newForm" action="/pokemon" method="POST">
-            Name: <input type="text" name="name" /><br/>
-            Image: <input type="text" name="img" placeholder="Upload or Drag .jpg"/><br />
-            <input class="submit" type="submit" name="submit" value="Add Pokemon"/>
-        </form>
-    </body>
-    <%- include ('./partials/footer.ejs') %>
+	<body>
+		<h1>Create a New Listing</h1>
+		<form action="/index" method="POST">
+            <div class="new">
+                name: <input class="newform" type="text" name="name" />
+                type: <input class="newform" type="text" name="type" placeholder="dag or cat" />
+                age: <input class="newform" type="text" name="age" />
+                gender: <input class="newform" type="text" name="gender" />
+                color: <input class="newform" type="text"  name="date" />
+            <div class="checkbox">
+                Good with kids: <input class="good checkbox" type="checkbox" name="kids" />
+                Good with dogs: <input  class="good checkbox" type="checkbox" name="dogs" />
+                Good with cats: <input  class="good checkbox" type="checkbox" name="cats" />
+            </div><br>
+            <div class="newsub" >
+                <input type="submit" name="" value="Add pet" />
+            </div>
+		</form>
+	</body>
+    <footer>
+        <%- include ('./partials/footer.ejs') %>
+    </footer>
 </html>

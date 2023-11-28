@@ -9,7 +9,7 @@
         <h1><%= furryFriend.name %></h1>
         <h2><%= furryFriend.age %></h2>
         <img src="<%= furryFriend.img %>">
-        <button><a href="/furryfriend/<%= furryFriend.id; %>/edit" class="edit">Edit</a></button>
+        <button><a href="/<%= furryFriend.id; %>/edit" class="edit">Edit</a></button>
         <h3><%= furryFriend.color %></h3>
         <h3><%= furryFriend.gender %></h3>
         Good with Kids: <input type="checkbox" id="kids" name="kids" disabled="disabled"
@@ -30,7 +30,7 @@
                 checked
             <% } %>
             >
-        <form class="trash" method="POST" action="/furryFriend/<%= furryFriend.id; %>?_method=DELETE">
+        <form class="trash" method="POST" action="/<%= furryFriend.id; %>?_method=DELETE">
             <input type="submit" value="Delete" class="delete">
         </form>
     </body>

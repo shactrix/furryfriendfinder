@@ -8,18 +8,18 @@ module.exports = [
         kids: true,
         cats: true,
         dogs: true,
-        img: '/assets/dog1brown.jpg'
+        img: '/assets/seed_images/brown_dog.jpg'
     },
     {
         petType: 'Dog',
         age: '6 years',
-        color: 'Brown',
-        name: 'Buster',
+        color: 'Brown and White',
+        name: 'Bubba',
         gender: 'Male',
         kids: true,
         cats: true,
         dogs: true,
-        img: 'img'
+        img: '/assets/seed_images/brown_white_dog.jpg'
     },
     {
         petType: 'Dog',
@@ -30,7 +30,7 @@ module.exports = [
         kids: true,
         cats: true,
         dogs: true,
-        img: 'img'
+        img: 'assets/seed_images/beagle.jpg'
     },
     {
         petType: 'Dog',
@@ -41,7 +41,7 @@ module.exports = [
         kids: true,
         cats: false,
         dogs: true,
-        img: 'img'
+        img: 'assets/seed_images/black_dog.jpg'
     },
     {
         petType: 'Dog',
@@ -52,7 +52,7 @@ module.exports = [
         kids: true,
         cats: false,
         dogs: false,
-        img: 'img'
+        img: 'assets/seed_images/white_dog.jpg'
     },
     {
         petType: 'Cat',
@@ -63,18 +63,18 @@ module.exports = [
         kids: true,
         cats: true,
         dogs: false,
-        img:'img'
+        img:'assets/seed_images/tuxedo_bat_cat.jpg'
     },
     {
         petType: 'Cat',
         age: '2 years',
-        color: 'Brown and White',
+        color: 'Tabby',
         name: 'Zelda',
         gender: 'Female',
         kids: true,
         cats: true,
         dogs: true,
-        img:'img'
+        img:'assets/seed_images/zelda.jpg'
     },
     {
         petType: 'Cat',
@@ -85,7 +85,7 @@ module.exports = [
         kids: true,
         cats: true,
         dogs: true,
-        img:'img'
+        img:'assets/seed_images/white_cat.jpg'
     },
     {
         petType: 'Cat',
@@ -96,7 +96,6 @@ module.exports = [
         kids: true,
         cats: true,
         dogs: false,
-        img:'img'
+        img:'assets/seed_images/sleepy_tigger.jpg'
     },
-
 ]

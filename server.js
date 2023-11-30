@@ -1,8 +1,7 @@
 // DEPENDCIES
- require('dotenv').config()
+require('dotenv').config()
 const express = require('express')
 const app = express();
- const mongoose = require('mongoose')
 const path = require('path')
 
 // const PORT = process.env.PORT
@@ -18,12 +17,9 @@ app.use((req,res, next) =>{
     next()
 })
 
-// app.get('/', (req, res) => {
-//     res.redirect('/index')
-// })
-
 // How to connect to the database either via heroku or locally
 const MONGODB_URI = process.env.MONGODB_URI;
+const mongoose = require('mongoose')
 mongoose.set('strictQuery', true)
 
 // MONGODB ATLAS CONNECTION
@@ -31,8 +27,6 @@ mongoose.set('strictQuery', true)
 mongoose.connect(MONGODB_URI , { 
     // useNewUrlParser: false, -- deprecated
     useUnifiedTopology: true,
-    // useCreateIndex: true,
-    // useFindAndModify: false
 });
 // Database Connection Error/Success
 const db = mongoose.connection
@@ -49,38 +43,29 @@ db.on('disconnected', () => console.log('MONGO is disconnected'));
 
 // furryFriend.collection.drop();
 
-
 // HOME
 app.get('/', (req, res) => {
     res.render('home.ejs')
 })
-
-
-
 
 // ABOUT
 app.get('/about', (req, res) => {
     res.render('about.ejs')
 })
 
-
-
-
 // INDEX
 app.get('/index', (req, res) => {
     furryFriend.find({}, (error, allFurryFriends)=>{
         res.render('index.ejs', {
             furryFriends: allFurryFriends
-})
-    })
         })
+    })
+})
     
-
 // NEW
 app.get('/new', (req, res) => {
     res.render('new.ejs')
 })
-
 
 // POST
 app.post('/new', (req, res) => {
@@ -91,14 +76,31 @@ app.post('/new', (req, res) => {
     // res.redirect(`/furryFriend/${furryFriendId}`)
 })
 
-
 // SHOW
 app.get('/:id', (req, res) => {
-    res.render('show.ejs', {
-        furryFriend: furryFriend[req.params.id]
+    furryFriend.findById(req.params.id, (err, foundFurryFriends) => {
+        if(err){console.log(err.message)}
+        res.render('show.ejs', {
+            furryFriend: foundFurryFriends
+        })
     })
 })
+// app.get('/:id', (req, res) => {
+//     const furryFriendId = req.params.id;
 
+//     try {
+//         const foundFurryFriend = furryFriend.findById(furryFriendId);
+//         if (!foundFurryFriend) {
+//             return res.status(404).send('Furry Friend not found.');
+//         }
+//         res.render('show.ejs', {
+//             furryFriend: foundFurryFriend,
+//         });
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).send('Internal Server Error');
+//     }
+// });
 
 
 // EDIT
@@ -112,23 +114,17 @@ app.get('/:id/edit', (req, res) => {
     )
 })
 
-
-
 // PUT
 app.put('/:id', (req,res) => { 
     furryFriend[req.params.id] = req.body
     res.redirect('/index')
 })
 
-
-
 // DELETE
 app.delete('/:id', (req,res) => {
     furryFriend.splice(req.params.id, 1)
     res.redirect('/index')
 })
-
-
 
 
 

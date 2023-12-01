@@ -8,7 +8,7 @@ module.exports = [
         kids: true,
         cats: true,
         dogs: true,
-        img: '/assets/seed_images/brown_dog.jpg'
+        img: '/seed_images/brown_dog.jpg'
     },
     {
         petType: 'Dog',
@@ -19,7 +19,7 @@ module.exports = [
         kids: true,
         cats: true,
         dogs: true,
-        img: '/assets/seed_images/brown_white_dog.jpg'
+        img: '/seed_images/brown_white_dog.jpg'
     },
     {
         petType: 'Dog',
@@ -30,7 +30,7 @@ module.exports = [
         kids: true,
         cats: true,
         dogs: true,
-        img: 'assets/seed_images/beagle.jpg'
+        img: '/seed_images/beagle.jpg'
     },
     {
         petType: 'Dog',
@@ -41,7 +41,7 @@ module.exports = [
         kids: true,
         cats: false,
         dogs: true,
-        img: 'assets/seed_images/black_dog.jpg'
+        img: '/seed_images/black_dog.jpg'
     },
     {
         petType: 'Dog',
@@ -52,7 +52,7 @@ module.exports = [
         kids: true,
         cats: false,
         dogs: false,
-        img: 'assets/seed_images/white_dog.jpg'
+        img: '/seed_images/white_dog.jpg'
     },
     {
         petType: 'Cat',
@@ -63,7 +63,7 @@ module.exports = [
         kids: true,
         cats: true,
         dogs: false,
-        img:'assets/seed_images/tuxedo_bat_cat.jpg'
+        img:'/seed_images/tuxedo_bat_cat.jpg'
     },
     {
         petType: 'Cat',
@@ -74,7 +74,7 @@ module.exports = [
         kids: true,
         cats: true,
         dogs: true,
-        img:'assets/seed_images/zelda.jpg'
+        img:'/seed_images/zelda.jpg'
     },
     {
         petType: 'Cat',
@@ -85,7 +85,7 @@ module.exports = [
         kids: true,
         cats: true,
         dogs: true,
-        img:'assets/seed_images/white_cat.jpg'
+        img:'/seed_images/white_cat.jpg'
     },
     {
         petType: 'Cat',
@@ -96,6 +96,6 @@ module.exports = [
         kids: true,
         cats: true,
         dogs: false,
-        img:'assets/seed_images/sleepy_tigger.jpg'
+        img:'/seed_images/sleepy_tigger.jpg'
     },
 ]

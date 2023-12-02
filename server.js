@@ -28,7 +28,7 @@ mongoose.set('strictQuery', true)
 // MONGODB ATLAS CONNECTION
 // May or may not need these depending on your Mongoose version
 mongoose.connect(MONGODB_URI , { 
-    // useNewUrlParser: false, -- deprecated
+    // useNewUrlParser: true,
     useUnifiedTopology: true,
 });
 // Database Connection Error/Success
@@ -103,47 +103,9 @@ app.get('/:id', (req, res) => {
     })
 })
 
-// app.get('/:id', (req, res) => {
-//     const furryFriendId = req.params.id;
-
-//     try {
-//         const foundFurryFriend = furryFriend.findById(furryFriendId);
-//         if (!foundFurryFriend) {
-//             return res.status(404).send('Furry Friend not found.');
-//         }
-//         res.render('show.ejs', {
-//             furryFriend: foundFurryFriend,
-//         });
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).send('Internal Server Error');
-//     }
-// });
-
 
 // EDIT
-// app.get('/:id/edit', (req, res) => {
-//     res.render('edit.ejs', {
-//         furryFriend: furryFriend[req.params.id],
-//         id: req.params.id
-//     })
-// })
-// app.get('/:id/edit', (req, res) => {
-//     furryFriend.findById(req.params.id, (err, foundFurryFriend) => {
-//         if (err) {
-//             console.log(err.message);
-//             // Handle the error, maybe render an error page or redirect
-//             res.status(404).send('Not Found');
-//         } else {
-//             res.render('edit.ejs', {
-//                 furryFriend: foundFurryFriend,
-//                 id: req.params.id
-//             });
-//         }
-//     });
-// });
 app.get('/:id/edit', (req, res) => {
-    console.log('Edit route hit');
     furryFriend.findById(req.params.id, (err, foundFurryFriend) => {
         if (err) {
             console.log(err.message);
@@ -161,10 +123,32 @@ app.get('/:id/edit', (req, res) => {
 
 
 // PUT
-app.put('/:id', (req,res) => { 
-   furryFriend.findByIdAndUpdate(req.params.id, req.body, {new: true}, (error, updatedFurryFriend) => {
+// app.put('/:id', (req,res) => { 
+//    furryFriend.findByIdAndUpdate(req.params.id, req.body, {new: true}, (error, updatedFurryFriend) => {
+//         res.redirect('/index')
+//         })
+// })
+app.put('/:id', (req, res) => {
+    if(req.body.dogs === 'on'){
+        req.body.dogs = true
+    } else {
+        req.body.dogs = false
+    }
+    if(req.body.cats === 'on'){
+        req.body.cats = true
+    } else {
+        req.body.cats = false
+    }
+    if(req.body.kids === 'on'){
+        req.body.kids = true
+    } else {
+        req.body.kids = false
+    }
+    furryFriend.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedFurryFriend) => {
+        if(err) {console.log(err.message)}
+        console.log(updatedFurryFriend)
         res.redirect('/index')
-        })
+    })
 })
 
 

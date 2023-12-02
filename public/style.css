@@ -4,24 +4,84 @@ body {
     font-family: 'Comfortaa', cursive;
     background-color: aqua;
     text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.new {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    /* width: 100px;  */
+    /* text-align: right;  */
+    margin-right: 10px; 
+}
+
+.newform {
+    width: 200px; 
+    margin-bottom: 10px;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.checkbox {
+    margin-right: 5px;
+}
+
+.newsub {
+    margin-top: 15px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Your existing styles below */
+
+.pets-container {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
-ul {
+
+.pet {
+    margin: 10px;
+    flex: 0 0 calc(33.333% - 20px);
+    max-width: calc(33.333% - 110px);
+}
+
+.pet-image {
+    max-width: 100%;
+    max-height: 150px;
+    display: block;
+    margin: 0 auto;
+}
+
+.pet-name {
+    font-size: 1.5em;
     color: rgb(14, 246, 2);
     text-decoration: none;
     text-shadow: 1px 1px 1px black;
-    font-size: 1.5em;
-    /* background: rgba(255, 116, 2, 0.9) */
+    margin-top: 5px;
 }
-li {
-    list-style-type: none;
-}
-.showImage{
-    max-width: 250px;
-    max-height: 250px;
-    text-align: center;
-    justify-content: center;
-}
+
 a {
     text-decoration: none;
+}
+
+.showImage {
+    max-width: 250px;
 }

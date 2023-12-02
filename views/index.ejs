@@ -4,16 +4,16 @@
         <%- include ('./partials/header.ejs') %>
     </header>
     <body>
-            <ul>
-                <% for (let i=0; i < furryFriends.length; i++) { %>
-                    <li>
-                        <a href="/<%=furryFriends[i].id%>">
-                            <%=furryFriends[i].name%>
-                           <img src="<%=furryFriends[i].img%>" style = "max-width: 150px">
-                        </a>
-                    </li>
-                <% } %>
-            </ul>
+        <div class="pets-container">
+            <% for (let i = 0; i < furryFriends.length; i++) { %>
+                <div class="pet">
+                    <a href="/<%= furryFriends[i]._id %>">
+                        <img src="<%= furryFriends[i].img %>" alt="<%= furryFriends[i].name %>" class="pet-image">
+                        <p class="pet-name" style="color: black"><%= furryFriends[i].name %></p>
+                    </a>
+                </div>
+            <% } %>
+        </div>
     </body>
     <footer>
         <%- include ('./partials/footer.ejs') %> 

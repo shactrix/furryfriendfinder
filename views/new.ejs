@@ -1,28 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-    <header>
-        <%- include ('./partials/header.ejs') %>
-    </header>
-	<body>
-		<h1>Add New Pet</h1>
-		<form action="/index" method="POST">
-            <div class="new">
-                name: <input class="newform" type="text" name="name" />
-                type: <input class="newform" type="text" name="petType" placeholder="dog or cat" />
-                age: <input class="newform" type="text" name="age" />
-                gender: <input class="newform" type="text" name="gender" />
-                color: <input class="newform" type="text"  name="color" />
-            <div class="checkbox">
-                Good with kids: <input class="good checkbox" type="checkbox" name="kids" />
-                Good with dogs: <input  class="good checkbox" type="checkbox" name="dogs" />
-                Good with cats: <input  class="good checkbox" type="checkbox" name="cats" />
-            </div><br>
-            <div class="newsub" >
-                <input type="submit" name="" value="Add pet" />
-            </div>
-		</form>
-	</body>
+<head>
+    <%- include ('./partials/header.ejs') %>
+</head>
+<body>
+    <h1>Add New Pet</h1>
+    <form action="/index" method="POST">
+        <div class="new">
+            <label for="name">Name:</label>
+            <input class="newform" type="text" name="name" id="name" />
+
+            <label for="petType">Type:</label>
+            <input class="newform" type="text" name="petType" id="petType" placeholder="dog or cat" />
+
+            <label for="age">Age:</label>
+            <input class="newform" type="text" name="age" id="age" />
+
+            <label for="gender">Gender:</label>
+            <input class="newform" type="text" name="gender" id="gender" />
+
+            <label for="color">Color:</label>
+            <input class="newform" type="text" name="color" id="color" />
+        </div>
+
+        <div class="checkbox">
+            <label for="kids">Good with kids:</label>
+            <input class="good checkbox" type="checkbox" name="kids" id="kids" />
+
+            <label for="dogs">Good with dogs:</label>
+            <input class="good checkbox" type="checkbox" name="dogs" id="dogs" />
+
+            <label for="cats">Good with cats:</label>
+            <input class="good checkbox" type="checkbox" name="cats" id="cats" />
+        </div>
+
+        <div class="newsub">
+            <input type="submit" value="Add pet" />
+        </div>
+    </form>
+
     <footer>
         <%- include ('./partials/footer.ejs') %>
     </footer>
+</body>
 </html>

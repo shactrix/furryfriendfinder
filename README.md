@@ -1,7 +1,7 @@
 # furryfriendfinder
 GA project 2 - Express, EJS, MongoDB
 
-Deployed Website: 
+Deployed Website: https://furryfriendfinder.onrender.com/
 
 Project Description:
 A website to search for and adopt a pet.
@@ -20,6 +20,7 @@ Stretch Goals:
 improving the css
 user auth
 admin auth that can only add, edit, delete
+drag and drop image for new pet
 a chat room for users
 
 

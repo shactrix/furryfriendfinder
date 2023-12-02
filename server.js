@@ -3,6 +3,7 @@ require('dotenv').config()
 const express = require('express')
 const app = express();
 const path = require('path')
+const methodOverride = require('method-override')
 
 // const PORT = process.env.PORT
 const furryFriend = require('./models/pet')
@@ -11,6 +12,7 @@ const seed = require('./models/seed')
 // MIDDLEWARE
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
+app.use(methodOverride('_method'))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use((req,res, next) =>{
     console.log("i run for all routes")
@@ -19,7 +21,8 @@ app.use((req,res, next) =>{
 
 // How to connect to the database either via heroku or locally
 const MONGODB_URI = process.env.MONGODB_URI;
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const { error } = require('console');
 mongoose.set('strictQuery', true)
 
 // MONGODB ATLAS CONNECTION
@@ -68,12 +71,34 @@ app.get('/new', (req, res) => {
 })
 
 // POST
-app.post('/new', (req, res) => {
-    req.body.name = req.body.name.charAt(0).toUpperCase() + req.body.name.slice(1);
-    furryFriend.push(req.body)
-    res.redirect('/index')
-    // const furryFriendId = furryfriend.length - 1;
-    // res.redirect(`/furryFriend/${furryFriendId}`)
+// app.post('/index', (req, res) => {
+//     req.body.name = req.body.name.charAt(0).toUpperCase() + req.body.name.slice(1);
+//     furryFriend.push(req.body)
+//     res.redirect('/index')
+//     // const furryFriendId = furryfriend.length - 1;
+//     // res.redirect(`/furryFriend/${furryFriendId}`)
+// })
+app.post('/index', (req, res) => {
+    if(req.body.dogs === 'on'){
+        req.body.dogs = true
+    } else {
+        req.body.dogs = false
+    }
+    if(req.body.cats === 'on'){
+        req.body.cats = true
+    } else {
+        req.body.cats = false
+    }
+    if(req.body.kids === 'on'){
+        req.body.kids = true
+    } else {
+        req.body.kids = false
+    }
+    furryFriend.create(req.body, (err, createdFurryFriends) => {
+        if(err) {console.log(err.message)}
+        console.log(createdFurryFriends)
+        res.redirect('/index')
+    })
 })
 
 // SHOW
@@ -85,6 +110,7 @@ app.get('/:id', (req, res) => {
         })
     })
 })
+
 // app.get('/:id', (req, res) => {
 //     const furryFriendId = req.params.id;
 
@@ -116,14 +142,17 @@ app.get('/:id/edit', (req, res) => {
 
 // PUT
 app.put('/:id', (req,res) => { 
-    furryFriend[req.params.id] = req.body
-    res.redirect('/index')
+   furryFriend.findByIdAndUpdate(req.params.id, req.body, {new: true}, (error, updatedFurryFriend) => {
+        res.redirect('/index')
+        })
 })
+
 
 // DELETE
 app.delete('/:id', (req,res) => {
-    furryFriend.splice(req.params.id, 1)
-    res.redirect('/index')
+    furryFriend.findByIdAndRemove(req.params.id, (error, data) => {
+        res.redirect('/index') 
+    })
 })
 
 

@@ -3,13 +3,14 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/style.css">
         <title>Document</title>
     </head>
     <body>
         <h1><%= furryFriend.name %></h1>
         <h2><%= furryFriend.age %></h2>
-        <img src="<%= furryFriend.img %>">
-        <button><a href="/<%= furryFriend.id; %>/edit" class="edit">Edit</a></button>
+        <img class="showImage" src="<%= furryFriend.img %>">
+        <button><a href="/<%= furryFriend; %>/edit" class="edit">Edit</a></button>
         <h3><%= furryFriend.color %></h3>
         <h3><%= furryFriend.gender %></h3>
         Good with Kids: <input type="checkbox" id="kids" name="kids" disabled="disabled"
@@ -30,7 +31,7 @@
                 checked
             <% } %>
             >
-        <form class="trash" method="POST" action="/<%= furryFriend.id; %>?_method=DELETE">
+        <form class="trash" action="/<%= furryFriend.id; %>?_method=DELETE" method="POST">
             <input type="submit" value="Delete" class="delete">
         </form>
     </body>

@@ -16,3 +16,9 @@ ul {
 li {
     list-style-type: none;
 }
+.showImage{
+    max-width: 250px;
+    max-height: 250px;
+    text-align: center;
+    justify-content: center;
+}

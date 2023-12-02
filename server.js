@@ -70,14 +70,6 @@ app.get('/new', (req, res) => {
     res.render('new.ejs')
 })
 
-// POST
-// app.post('/index', (req, res) => {
-//     req.body.name = req.body.name.charAt(0).toUpperCase() + req.body.name.slice(1);
-//     furryFriend.push(req.body)
-//     res.redirect('/index')
-//     // const furryFriendId = furryfriend.length - 1;
-//     // res.redirect(`/furryFriend/${furryFriendId}`)
-// })
 app.post('/index', (req, res) => {
     if(req.body.dogs === 'on'){
         req.body.dogs = true
@@ -130,15 +122,43 @@ app.get('/:id', (req, res) => {
 
 
 // EDIT
+// app.get('/:id/edit', (req, res) => {
+//     res.render('edit.ejs', {
+//         furryFriend: furryFriend[req.params.id],
+//         id: req.params.id
+//     })
+// })
+// app.get('/:id/edit', (req, res) => {
+//     furryFriend.findById(req.params.id, (err, foundFurryFriend) => {
+//         if (err) {
+//             console.log(err.message);
+//             // Handle the error, maybe render an error page or redirect
+//             res.status(404).send('Not Found');
+//         } else {
+//             res.render('edit.ejs', {
+//                 furryFriend: foundFurryFriend,
+//                 id: req.params.id
+//             });
+//         }
+//     });
+// });
 app.get('/:id/edit', (req, res) => {
-    res.render(
-        'edit.ejs',
-        {
-            furryFriend: furryFriend[req.params.id],
-            id: req.params.id
+    console.log('Edit route hit');
+    furryFriend.findById(req.params.id, (err, foundFurryFriend) => {
+        if (err) {
+            console.log(err.message);
+            // Handle the error, maybe render an error page or redirect
+            res.status(404).send('Not Found');
+        } else {
+            console.log('Furry friend found:', foundFurryFriend);
+            res.render('edit.ejs', {
+                furryFriend: foundFurryFriend,
+                id: req.params.id
+            });
         }
-    )
-})
+    });
+});
+
 
 // PUT
 app.put('/:id', (req,res) => { 

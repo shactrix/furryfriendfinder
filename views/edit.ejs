@@ -5,26 +5,29 @@
     </header>
     <body>
         <h1>Edit Page</h1>
-        <form action="/<%=furryFriend.id%>?_method=PUT" method="POST">
+        <form action="/<%=furryFriend.id.toString()%>?_method=PUT" method="POST">
+
+
+        
             <div class="new">
-                name: <input class="newform" type="text" name="name" value="<%=furryFriend.name%>" />
-                age: <input class="newform" type="text" name="age" value="<%=furryFriend.age%>" />
-                gender: <input class="newform" type="text" name="gender" value="<%=furryFriend.gender%>" />
-                type: <input class="newform" type="text" name="type" value="<%=furryFriend.type%>" />
-                color: <input class="newform" type="text" name="color" value="<%=furryFriend.color%>" />
+                Name: <input class="newform" type="text" name="name" value="<%=furryFriend.name%>" />
+                Age: <input class="newform" type="text" name="age" value="<%=furryFriend.age%>" />
+                Gender: <input class="newform" type="text" name="gender" value="<%=furryFriend.gender%>" />
+                Type: <input class="newform" type="text" name="petType" value="<%=furryFriend.petType%>" />
+                Color: <input class="newform" type="text" name="color" value="<%=furryFriend.color%>" />
             </div>
-            <div class="sitcheck">
-                good with dogs: <input class="sitchecklab" type="checkbox" name="good with dogs" 
+            <div class="newChecks">
+                Good with dogs: <input class="newCheckind" type="checkbox" name="dogs" 
                 <% if(furryFriend.dogs === true){ %>
                       checked
                 <% } %>
                 />
-                good with cats: <input class="sitchecklab" type="checkbox" name="good with cats" 
+                Good with cats: <input class="newCheckind" type="checkbox" name="cats" 
                     <% if(furryFriend.cats === true){ %>
                         checked
                     <% } %>
                 />
-                good with kids: <input class="sitchecklab" type="checkbox" name="good with kids" 
+                Good with kids: <input class="newCheckind" type="checkbox" name="kids" 
                     <% if(furryFriend.kids === true){ %>
                         checked
                     <% } %>
@@ -35,5 +38,7 @@
             </div>
         </form>
     </body>
-<footer><%- include ('./partials/footer.ejs') %></footer>
+    <footer>
+        <%- include ('./partials/footer.ejs') %>
+    </footer>
 </html>

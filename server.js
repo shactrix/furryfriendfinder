@@ -123,11 +123,6 @@ app.get('/:id/edit', (req, res) => {
 
 
 // PUT
-// app.put('/:id', (req,res) => { 
-//    furryFriend.findByIdAndUpdate(req.params.id, req.body, {new: true}, (error, updatedFurryFriend) => {
-//         res.redirect('/index')
-//         })
-// })
 app.put('/:id', (req, res) => {
     if(req.body.dogs === 'on'){
         req.body.dogs = true
@@ -151,15 +146,12 @@ app.put('/:id', (req, res) => {
     })
 })
 
-
 // DELETE
 app.delete('/:id', (req,res) => {
     furryFriend.findByIdAndRemove(req.params.id, (error, data) => {
         res.redirect('/index') 
     })
 })
-
-
 
 
 app.listen(3000, () => {
